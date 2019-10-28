@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Ship.gd" type="Script" id=1]
+[ext_resource path="res://Assets/nBShip.png" type="Texture" id=2]
+[ext_resource path="res://Assets/BShip.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Laser_Shoot.wav" type="AudioStream" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 6.0
+}, {
+"frames": [ null, ExtResource( 2 ), null, ExtResource( 3 ) ],
+"loop": true,
+"name": "Hurt",
+"speed": 6.0
+} ]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, -9, 7, 5, -7, 5 )
+
+[node name="Ship" type="KinematicBody2D" groups=[
+"Player",
+]]
+collision_mask = 4
+script = ExtResource( 1 )
+SHIP_SPEED = 8
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+
+[node name="BarrelL" type="Position2D" parent="."]
+position = Vector2( -6, -7 )
+
+[node name="BarrelR" type="Position2D" parent="."]
+position = Vector2( 7, -7 )
+
+[node name="GunCooldown" type="Timer" parent="."]
+
+[node name="HurtCooldown" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -30.0
+bus = "Sounds"
+[connection signal="timeout" from="GunCooldown" to="." method="_on_GunCooldown_timeout"]
+[connection signal="timeout" from="HurtCooldown" to="." method="_on_HurtCooldown_timeout"]

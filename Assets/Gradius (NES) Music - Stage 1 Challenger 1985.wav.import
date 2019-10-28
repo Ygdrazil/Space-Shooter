@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Gradius (NES) Music - Stage 1 Challenger 1985.wav-5638ecd576fa3fc4f9372ebdff72f204.sample"
+
+[deps]
+
+source_file="res://Assets/Gradius (NES) Music - Stage 1 Challenger 1985.wav"
+dest_files=[ "res://.import/Gradius (NES) Music - Stage 1 Challenger 1985.wav-5638ecd576fa3fc4f9372ebdff72f204.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
